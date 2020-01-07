@@ -43,5 +43,7 @@ test('When signed in, shows logout button', () => {
 	const keygrip = new Keygrip([keys.cookieKey]);
 	const sig = keygrip.sign('session=' + sessionString);
 
-	console.log(sessionString, sig);
+	await page.setCookie({ name: 'session', value: sessionString });
+	await page.setCookie({ name: 'session.sig', value: sig });
+	await page.goto('localhost:3000');
 });
