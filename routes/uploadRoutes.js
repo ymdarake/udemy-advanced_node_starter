@@ -13,7 +13,7 @@ module.exports = app => {
 		const key = `${req.user.id}/${uuid()}.jpeg`;
 		s3.getSignedUrl('putObject', {
 			Bucket: 'my-blog-bucket-123',
-			ContentType: 'jpeg',
+			ContentType: 'image/jpeg',
 			Key: key
 		}, (err, url) => res.send({ key, url }));
 	});
